@@ -1,0 +1,52 @@
+<div class="row justify-content-between">
+    <div class="col-auto">
+        <div class="row">
+            <div class="col-auto" (click)="readMore = !readMore;">
+                <p style="max-width: 200px;" class="text-truncate" *ngIf="readMore === false; else notShort">
+                    {{comment.comment}}</p>
+                <ng-template #notShort>
+                    <p style="max-width: 200px;">{{comment.comment}}</p>
+                </ng-template>
+            </div>
+            <div class="col-auto">
+                <img src={{owner?.selfInfo?.avatar}} class="rounded-circle shadow-4" style="width: 20px;"
+                    alt="Avatar" />
+                <span class="m-2">{{owner?.login}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-auto">
+        <div class="row">
+            <div class="col-auto">
+                <span class="date">{{comment.date | date}}</span>
+            </div>
+            <div class="col-auto">
+                <span class="p-1">{{comment.likes.length}}</span>
+                <img class="p-0" width="15px" src={{likeComment.url}} alt="like" (click)="doSmth('like')" />
+            </div>
+            <div class="col-auto text-center" *ngIf="checkOwner()">
+                <ng-container *ngIf="timer.temp === false; then remove; else question"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #remove>
+    <button class="dropdown-toggle border-0 settings" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+    </button>
+    <ul class="dropdown-menu shadow p-0" aria-labelledby="dropdownMenuButton1">
+        <li class="dropdown-item" (click)="doSmth('removeComment')">Remove</li>
+    </ul>
+</ng-template>
+
+<ng-template #question>
+    <span class="date">Letft {{timer.timeLeft}} seconds</span>
+    <p class="date m-0">Do you want to remove comment?</p>
+    <div class="row justify-content-around">
+        <div class="col-auto">
+            <button class="input-group-text border-0 send p-0" (click)="doSmth('StopTimer')">Click to cancel</button>
+        </div>
+    </div>
+</ng-template>

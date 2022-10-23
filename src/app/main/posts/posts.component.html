@@ -1,0 +1,18 @@
+<app-post class="row" (remove)="doSmth('remove', $event)" *ngFor="let post of client.content" [post]="post"
+    [timer]="timer">
+    <div class="col-12" *ngIf="timer.temp === true && post.id === idPostRemove">
+        <div class="row justify-content-around">
+            <span class="date">Letft {{timer.timeLeft}} seconds</span>
+            <p class="date m-0">Do you want to remove this post?</p>
+        </div>
+
+        <div class="row justify-content-around">
+            <div class="col-auto">
+                <button class="input-group-text border-0 send p-0" (click)="doSmth('StopTimer')">Click to
+                    cancel</button>
+            </div>
+        </div>
+    </div>
+</app-post>
+
+<app-add class="modal fade" id={{client.login}} tabindex="-1" aria-hidden="true" [client]="client"></app-add>

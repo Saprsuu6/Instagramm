@@ -1,0 +1,103 @@
+<div class="container p-3" *ngIf="owner !== undefined">
+    <div class="row card border-0 mt-4">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4 col-12 text-center">
+                    <img src={{owner?.selfInfo?.avatar}} class="rounded-circle shadow-4" style="width: 100px;"
+                        alt="Avatar" />
+                </div>
+                <div class="col-md-8 col-12 p-3">
+                    <div class="row text-center justify-content-around">
+                        <div class="col-6">
+                            <p class="content mt-2">{{owner?.login}}</p>
+                        </div>
+                        <div class="col-6"
+                            *ngIf="getCurrentClient() !== undefined && getCurrentClient().id === owner.id">
+                            <button class="d-grid btn shadow editprofile" data-bs-toggle="modal"
+                                data-bs-target="#selfInfo" (click)="doSmth('CheckClient')">Editp rofile</button>
+                        </div>
+                    </div>
+                    <div class="row text-center justify-content-around p-4">
+                        <div class="col-4">
+                            <span class="content m-0">Posts: {{owner?.content?.length}}</span>
+                        </div>
+                        <div class="col-4">
+                            <span class="content m-0">Subscribers: ?</span>
+                        </div>
+                        <div class="col-4">
+                            <span class="content m-0">Subscribes: ?</span>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-auto my-1" *ngIf="owner.selfInfo?.name !== ''">
+                            <span class="content">Name: {{owner.selfInfo?.name}}</span>
+                        </div>
+                        <div class="col-12 my-1" *ngIf="owner.selfInfo?.surename !== ''">
+                            <span class="content">Surename: {{owner.selfInfo?.surename}}</span>
+                        </div>
+                        <div class="col-12 my-1" *ngIf="owner.selfInfo?.age !== 0 && owner.selfInfo?.age !== ''">
+                            <span class="content">Age: {{owner.selfInfo?.age}}</span>
+                        </div>
+                        <div class="col-12 my-1" *ngIf="owner.selfInfo?.email !== ''">
+                            <span class="content">Email: {{owner.selfInfo?.email}}</span>
+                        </div>
+                        <div class="col-12 my-1" *ngIf="owner.selfInfo?.phone !== ''">
+                            <span class="content">Phone: {{owner.selfInfo?.phone}}</span>
+                        </div>
+                        <div class="col-12 my-1" *ngIf="owner.selfInfo?.bio !== ''">
+                            <span class="content">Bio: {{owner.selfInfo?.bio}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4 col-12 g-3" *ngFor="let post of owner.content">
+                    <img src={{post.image}} alt="image" width="100%" data-bs-toggle="modal" #post data-bs-target="">
+
+                    <div class="modal fade" tabindex="-1" [id]="['post' + post.id]" aria-hidden="true" #modal>
+                        <div class="modal-dialog">
+                            <div class="modal-content p-1">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <app-post (remove)="doSmth('remove', $event)" [post]="post" [timer]="timer">
+                                        <div class="col-12" *ngIf="timer.temp === true && post.id === idPostRemove">
+                                            <div class="row justify-content-around">
+                                                <span class="date">Letft {{timer.timeLeft}} seconds</span>
+                                                <p class="date m-0">Do you want to remove this post?</p>
+                                            </div>
+
+                                            <div class="row justify-content-around">
+                                                <div class="col-auto">
+                                                    <button class="input-group-text border-0 send p-0"
+                                                        (click)="doSmth('StopTimer')">Click to
+                                                        cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </app-post>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="getCurrentClient() !== undefined" class="modal fade" id="selfInfo" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content p-1">
+                <div class="p-3">
+                    <app-form-self-info [client]="owner"></app-form-self-info>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-add *ngIf="owner !== undefined" class="modal fade" id={{owner.login}} tabindex="-1" aria-hidden="true"
+        [client]="owner"></app-add>

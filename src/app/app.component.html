@@ -1,0 +1,29 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-white bg-white shadow">
+        <div class="container-fluid">
+            <img class="header navbar-brand" src="../assets/resources/instagram-header.png" routerLink="" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <div class="navbar-toggler-icon">More</div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="chekForClient()">
+                    <li class="nav-item m-2">
+                        <img src="../assets/resources/add.png" width="30px" data-bs-toggle="modal" #target
+                            data-bs-target="" />
+                    </li>
+                    <li class="nav-item m-2">
+                        <img src="../assets/resources/profile.png" width="30px" (click)="goToCurrentPage()" />
+                    </li>
+                </ul>
+                <a routerLink="/form" routerLinkActive="true" style="margin-left: auto; margin-right: 30px;"
+                    *ngIf="!chekForClient()">Sing
+                    up/Log
+                    in</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<router-outlet></router-outlet>

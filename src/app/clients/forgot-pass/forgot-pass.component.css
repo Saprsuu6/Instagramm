@@ -1,0 +1,15 @@
+.forgot {
+  background-color: #fff;
+  padding: 12px;
+  border: 1px solid #dfdfdf;
+}
+
+.hints {
+  background: bottom url("../../../assets/resources/instagram_gradient.jpg");
+
+  color: white;
+}
+
+.email {
+  background: top url("../../../assets/resources/instagram_gradient.jpg");
+}

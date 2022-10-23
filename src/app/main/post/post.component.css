@@ -1,0 +1,29 @@
+.icon {
+  width: 40px;
+}
+
+p {
+  margin: 0px;
+}
+
+.comments-title {
+  margin-top: 10px;
+  color: gray;
+}
+
+.comments-title:hover {
+  color: black;
+}
+
+.send {
+  background-color: white;
+}
+
+.send:hover {
+  font-weight: bold;
+  color: lightskyblue;
+}
+
+.settings {
+  background-color: white;
+}

@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-12">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Login</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Login" formControlName="login"
+                    [ngClass]="{'has-error': form.get('login')?.invalid && form.get('login')?.touched && !error(form, 'login', 'used')}">
+            </div>
+            <div *ngIf="form.get('login')?.invalid && form.get('login')?.touched">
+                <div class="alert alert-warning p-2" role="alert" *ngIf="error(form, 'login','used')">
+                    <span>Login already used</span>
+                </div>
+                <div class="alert alert-danger p-2" role="alert" *ngIf="!error(form, 'login', 'used')">
+                    <span *ngIf="error(form, 'login', 'required')">Field is require</span>
+                    <span *ngIf="error(form, 'login', 'pattern')">Login must have at least 3
+                        latters</span>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Password</span>
+                <input type={{passwordVisibitlity}} class="form-control" placeholder="Password"
+                    formControlName="password"
+                    [ngClass]="{'has-error': form.get('password')?.invalid && form.get('password')?.touched}">
+                <div class="input-group-text">
+                    <input type="checkbox" #passVisibility class="form-check-input m-0" (click)="setVisibility()" />
+                </div>
+            </div>
+            <div class="alert alert-danger p-2" role="alert"
+                *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+                <span *ngIf="error(form, 'password', 'required')">Field is require</span>
+                <span *ngIf="error(form, 'password', 'pattern')">Password must have at least
+                    1
+                    big latter, 1
+                    number, 6
+                    symbols</span>
+            </div>
+
+            <div formGroupName="userInfo">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Avatar</span>
+                    </div>
+                    <input type="file" #file class="form-control" placeholder="Avatar link" formControlName="avatar">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Age</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Age" formControlName="age"
+                        [ngClass]="{'has-error': form.get('userInfo.age')?.invalid && form.get('userInfo.age')?.touched}">
+                </div>
+                <div class="alert alert-danger p-2" role="alert"
+                    *ngIf="form.get('userInfo.age')?.invalid && form.get('userInfo.age')?.touched">
+                    <span *ngIf="error(form, 'userInfo.age', 'required')">Field is require</span>
+                    <span *ngIf="error(form, 'userInfo.age', 'pattern')">Incorrect age. Must be from 6 to 100</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Name" formControlName="name"
+                        [ngClass]="{'has-error': form.get('userInfo.name')?.invalid && form.get('userInfo.name')?.touched}">
+                </div>
+                <div class="alert alert-danger p-2" role="alert"
+                    *ngIf="form.get('userInfo.name')?.invalid && form.get('userInfo.name')?.touched">
+                    <span *ngIf="error(form, 'userInfo.name', 'required')">Field is require</span>
+                    <span *ngIf="error(form, 'userInfo.name', 'pattern')">Name must have at least 3
+                        latters</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Surename</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Surename" formControlName="surename"
+                        [ngClass]="{'has-error': form.get('userInfo.surename')?.invalid && form.get('userInfo.surename')?.touched}">
+                </div>
+                <div class="alert alert-danger p-2" role="alert"
+                    *ngIf="form.get('userInfo.surename')?.invalid && form.get('userInfo.surename')?.touched">
+                    <span *ngIf="error(form, 'userInfo.surename', 'required')">Field is require</span>
+                    <span *ngIf="error(form , 'userInfo.surename', 'pattern')">Surename must have at least 3
+                        latters</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="email"
+                        [ngClass]="{'has-error': form.get('userInfo.email')?.invalid && form.get('userInfo.email')?.touched}">
+                </div>
+                <div class="alert alert-danger p-2" role="alert"
+                    *ngIf="form.get('userInfo.email')?.invalid && form.get('userInfo.email')?.touched">
+                    <span *ngIf="error(form, 'userInfo.email', 'required')">Field is require</span>
+                    <span *ngIf="error(form, 'userInfo.email', 'email')">Example: nick@mail.com</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Phone</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Phone" formControlName="phone"
+                        [ngClass]="{'has-error': form.get('userInfo.phone')?.invalid && form.get('userInfo.phone')?.touched}">
+                </div>
+                <div class="alert alert-danger p-2" role="alert"
+                    *ngIf="form.get('userInfo.email')?.invalid && form.get('userInfo.email')?.touched">
+                    <span *ngIf="error(form, 'userInfo.phone', 'required')">Field is require</span>
+                    <span *ngIf="error(form, 'userInfo.phone', 'pattern')">Example: +380(67)777-7-777</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <textarea type="file" class="form-control" placeholder="Bio" formControlName="bio"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-auto"><button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button></div>
+                <div class="col-auto"><button [disabled]="form.get('login')?.invalid || form.get('password')?.invalid"
+                        type="submit" class="btn btn-primary">Save changes</button></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="position-relative" *ngIf="changesSubmited">
+    <div class="position-absolute top-0 end-0 alert alert-success p-1">Changes were saved</div>
+</div>

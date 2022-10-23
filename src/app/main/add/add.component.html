@@ -1,0 +1,22 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="input-group mb-3">
+                <input type="file" #file class="form-control" placeholder="Picture link" (change)="setLinkPicture()">
+            </div>
+
+            <textarea [disabled]="link === ''" class="form-control" placeholder="Describe"
+                [(ngModel)]="describe"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+            <div *ngIf="link !== ''" class="mt-2">
+                <span class="date">Preview:</span>
+                <img class="card-img-top rounded" src={{link}} alt="picture" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="link === ''"
+                (click)="add()">Add</button>
+        </div>
+    </div>
+</div>

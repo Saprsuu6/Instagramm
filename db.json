@@ -1,0 +1,165 @@
+{
+  "clients": [
+    {
+      "login": "Andry",
+      "password": "Cormax25524",
+      "selfInfo": {
+        "avatar": "../../../assets/clientPictures/myAva.jpg",
+        "age": "20",
+        "name": "Andry",
+        "surename": "Saprigin",
+        "email": "mr.asd.2002@gmail.com",
+        "phone": "+380631232318",
+        "bio": "Some bio"
+      },
+      "content": [
+        {
+          "id": 1,
+          "client_id": 1,
+          "image": "../../../assets/testPictures/1.jpg",
+          "description": "Woderfull picture",
+          "comments": [
+            {
+              "id": 1,
+              "client_id": 2,
+              "comment": "asd",
+              "likes": [
+                {
+                  "client_id": 1
+                }
+              ],
+              "date": "2022-06-10T20:28:48.827Z"
+            },
+            {
+              "id": 2,
+              "client_id": 1,
+              "comment": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "likes": [
+                {
+                  "client_id": 1
+                }
+              ],
+              "date": "2022-06-11T09:50:16.087Z"
+            }
+          ],
+          "likes": [
+            {
+              "client_id": 1
+            }
+          ],
+          "saves": [
+            {
+              "client_id": 1
+            }
+          ],
+          "date": "6/10/2002"
+        },
+        {
+          "id": 2,
+          "client_id": 1,
+          "image": "../../../assets/testPictures/4.jpg",
+          "description": "",
+          "comments": [],
+          "likes": [
+            {
+              "client_id": 1
+            }
+          ],
+          "saves": [],
+          "date": "2022-06-15T06:27:22.354Z"
+        },
+        {
+          "id": 3,
+          "client_id": 1,
+          "image": "../../../assets/testPictures/5.jpg",
+          "description": "",
+          "comments": [],
+          "likes": [],
+          "saves": [],
+          "date": "2022-06-15T06:28:02.410Z"
+        },
+        {
+          "id": 4,
+          "client_id": 1,
+          "image": "../../../assets/testPictures/3.jpg",
+          "description": "asdasd",
+          "comments": [
+            {
+              "id": 1,
+              "client_id": 1,
+              "comment": "asdasd",
+              "likes": [],
+              "date": "2022-06-23T06:06:37.559Z"
+            }
+          ],
+          "likes": [],
+          "saves": [],
+          "date": "2022-06-19T09:22:49.077Z"
+        },
+        {
+          "id": 5,
+          "client_id": 1,
+          "image": "../../../assets/testPictures/3.jpg",
+          "description": "Some describe",
+          "comments": [],
+          "likes": [],
+          "saves": [],
+          "date": "2022-06-23T06:06:27.714Z"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "login": "Kira",
+      "password": "Qwerty12345",
+      "selfInfo": {
+        "avatar": "../../../assets/clientPictures/Ava2.jpg",
+        "age": 0,
+        "name": "",
+        "surename": "",
+        "email": "",
+        "phone": "",
+        "bio": ""
+      },
+      "content": [
+        {
+          "id": 1,
+          "client_id": 2,
+          "image": "../../../assets/testPictures/3.jpg",
+          "description": "",
+          "comments": [
+            {
+              "id": 1,
+              "client_id": 1,
+              "comment": "WOnderfull picture",
+              "likes": [
+                {
+                  "client_id": 1
+                }
+              ],
+              "date": "2022-06-13T09:40:41.756Z"
+            }
+          ],
+          "likes": [],
+          "saves": [
+            {
+              "client_id": 1
+            }
+          ],
+          "date": "2022-06-12T08:52:07.870Z"
+        },
+        {
+          "id": 2,
+          "client_id": 2,
+          "image": "../../../assets/testPictures/6.jpg",
+          "description": "",
+          "comments": [],
+          "likes": [],
+          "saves": [],
+          "date": "2022-06-13T10:52:58.937Z"
+        }
+      ],
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="row text-center justify-content-center align-items-center">
+        <div class="col-12 col-md-6 g-3">
+            <img src="../../../assets/resources/instagram_test.jpg" class="shadow rounded img-fluid"
+                alt="Responsive image" />
+        </div>
+
+        <div class="col-12 col-md-6 g-3">
+            <div class="card border-0 shadow m-2 registration">
+                <div class="card-body">
+                    <form novalidate [formGroup]="formRegistration" (ngSubmit)="singUp()">
+                        <h1 style="color: white; font-family: monospace">Registration</h1>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Login</span>
+                            <input type="text" class="form-control" placeholder="Username" formControlName="login"
+                                [ngClass]="{'has-error': formRegistration.get('login')?.invalid && formRegistration.get('login')?.touched && !error(formRegistration, 'login', 'used')}">
+                        </div>
+                        <div *ngIf="formRegistration.get('login')?.invalid && formRegistration.get('login')?.touched">
+                            <div class="alert alert-warning p-2" role="alert"
+                                *ngIf="error(formRegistration, 'login','used')">
+                                <span>Login already used</span>
+                            </div>
+                            <div class="alert alert-danger p-2" role="alert"
+                                *ngIf="!error(formRegistration, 'login', 'used')">
+                                <span *ngIf="error(formRegistration, 'login', 'required')">Field is require</span>
+                                <span *ngIf="error(formRegistration, 'login', 'pattern')">Login must have at least 3
+                                    latters</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Password</span>
+                            <input type={{passwordVisibitlitySingUp}} class="form-control" placeholder="Password"
+                                formControlName="password"
+                                [ngClass]="{'has-error': formRegistration.get('password')?.invalid && formRegistration.get('password')?.touched}">
+                            <div class="input-group-text">
+                                <input type="checkbox" #passVisibilitySingUp class="form-check-input m-0"
+                                    (click)="setVisibilitySingUp()" />
+                            </div>
+                        </div>
+                        <div class="alert alert-danger p-2" role="alert"
+                            *ngIf="formRegistration.get('password')?.invalid && formRegistration.get('password')?.touched">
+                            <span *ngIf="error(formRegistration, 'password', 'required')">Field is require</span>
+                            <span *ngIf="error(formRegistration, 'password', 'pattern')">Password must have at least
+                                1
+                                big latter, 1
+                                number, 6
+                                symbols</span>
+                        </div>
+                        <button [disabled]="formRegistration.invalid" class="btn btn-primary">Sing up</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow m-2 autorisation">
+                <div class="card-body">
+                    <form novalidate [formGroup]="formAutorisation" (ngSubmit)="logIn()">
+                        <h1 style="color: white; font-family: monospace">Autorisation</h1>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Login</span>
+                            <input type="text" class="form-control" placeholder="Username" formControlName="login"
+                                [ngClass]="{'has-error': formAutorisation.get('login')?.invalid && formAutorisation.get('login')?.touched && !error(formAutorisation, 'login', 'used')}">
+                        </div>
+                        <div *ngIf="formAutorisation.get('login')?.invalid && formAutorisation.get('login')?.touched">
+                            <div class="alert alert-danger p-2" role="alert"
+                                *ngIf="!error(formAutorisation, 'login', 'unused')">
+                                <span *ngIf="error(formAutorisation, 'login', 'required')">Field is require</span>
+                                <span *ngIf="error(formAutorisation, 'login', 'pattern')">Login must have at least 3
+                                    latters</span>
+                                <span *ngIf="error(formAutorisation, 'login', 'uncorrectLogin')">Incorrenct
+                                    login</span>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-text">Password</span>
+                            <input type={{passwordVisibitlityLogIn}} class="form-control" placeholder="Password"
+                                formControlName="password"
+                                [ngClass]="{'has-error': formAutorisation.get('password')?.invalid && formAutorisation.get('password')?.touched}">
+                            <div class="input-group-text">
+                                <input type="checkbox" #passVisibilityLogIn SingUp class="form-check-input m-0"
+                                    (click)="setVisibilityLogIn()" />
+                            </div>
+                        </div>
+                        <div class="alert alert-danger p-2" role="alert"
+                            *ngIf="formAutorisation.get('password')?.invalid && formAutorisation.get('password')?.touched">
+                            <span *ngIf="error(formAutorisation, 'password', 'required')">Field is require</span>
+                            <span *ngIf="error(formAutorisation, 'password', 'pattern')">Password must have at least
+                                1
+                                big latter, 1
+                                number, 6
+                                symbols</span>
+                            <span *ngIf="error(formAutorisation, 'password', 'uncorrectPassword')">Incorrenct
+                                password</span>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto mb-3">
+                                <a routerLink="/forgot-pass">Forgot password</a>
+                            </div>
+                        </div>
+                        <button [disabled]="formAutorisation.invalid" class="btn btn-primary">Log in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top fixed-bottom footer">
+    <div class="col-md-4 d-flex align-items-center">
+        <span class="text-muted p-2">© 2021 Company, Inc</span>
+    </div>
+</footer>

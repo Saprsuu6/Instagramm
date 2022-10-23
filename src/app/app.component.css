@@ -1,0 +1,18 @@
+::ng-deep.header {
+  width: 200px;
+  margin-left: 30px;
+}
+
+::ng-deep.date {
+  color: gray;
+}
+
+::ng-deep.send {
+  background-color: white;
+  font-size: small;
+}
+
+::ng-deep.send:hover {
+  font-weight: bold;
+  color: lightskyblue;
+}

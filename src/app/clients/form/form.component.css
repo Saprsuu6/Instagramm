@@ -1,0 +1,15 @@
+.registration {
+  background: top url("../../../assets/resources/instagram_gradient.jpg");
+}
+
+.autorisation {
+  background: bottom url("../../../assets/resources/instagram_gradient.jpg");
+}
+
+.has-error {
+  background-color: lightpink;
+}
+
+.footer {
+  background-color: white;
+}

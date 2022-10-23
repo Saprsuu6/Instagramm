@@ -1,0 +1,63 @@
+<div class="col-12 card border-0 g-4 p-0">
+    <ng-content></ng-content>
+    <div class="pb-2">
+        <div class="row justify-content-between">
+            <div class="col-auto">
+                <img src={{owner?.selfInfo?.avatar}} class="rounded-circle shadow-4" style="width: 40px;" alt="Avatar"
+                    (click)="goToCurrentPage()" />
+                <span class="m-2">{{owner?.login}}</span>
+            </div>
+            <div class="col-auto">
+                <div class="col-auto" *ngIf="checkOwner() && this.timer.temp === false">
+                    <button class="dropdown-toggle border-0 settings mt-2" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    </button>
+                    <ul class="dropdown-menu shadow p-0" aria-labelledby="dropdownMenuButton1">
+                        <li class="dropdown-item" data-bs-dismiss="modal" aria-label="Close"
+                            (click)="doSmth('removePost')">Remove</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="card-img-top rounded" src={{post.image}} alt="picture" />
+    <div class="card-body p-0">
+        <div class="row justify-content-between">
+            <div class="col-auto">
+                <img class="icon p-2" src={{like.url}} (click)="doSmth('like')" alt="like" data-bs-dismiss="modal"
+                    aria-label="Close" />
+                <span>{{post.likes.length}}</span>
+            </div>
+
+            <div class="col-auto">
+                <img class="icon p-2" src={{save.url}} (click)="doSmth('save')" alt="unlike" />
+            </div>
+        </div>
+        <span class="date">{{post.date | date}}</span>
+        <hr class="my-2">
+        <div class="card-text">
+            <div *ngIf="post.description !== ''" (click)="readMore = !readMore;">
+                <p style="max-width: 500px;" class="text-truncate" *ngIf="readMore === false; else notShort">
+                    {{post.description}}</p>
+                <ng-template #notShort>
+                    <p>{{post.description}}</p>
+                </ng-template>
+            </div>
+
+            <p class="comments-title" (click)="comments = !comments">Comments ({{post.comments?.length}})</p>
+            <div *ngIf="comments">
+                <hr class="my-1">
+                <app-comment *ngFor="let comment of post.comments" [comment]="comment" [post]="post"></app-comment>
+            </div>
+
+            <div class="input-group mb-3">
+                <input class="form-control rounded-pill py-0" [(ngModel)]="stringComment" type="text"
+                    placeholder="Comment...">
+                <div class="input-group-append">
+                    <button [disabled]="stringComment.length === 0" class="input-group-text border-0 send"
+                        (click)="doSmth('addComment')">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
